@@ -12,21 +12,21 @@ class JRDRouter {
             case 'post':
                 return this.makePostRequest(this.path, this.middlewares, this.action);
             case 'get':
-                this.makeGetRequest(this.path, this.middlewares, this.action);
+                return this.makeGetRequest(this.path, this.middlewares, this.action);
                 break;
             case 'put':
-                this.makePutRequest(this.path, this.middlewares, this.action);
+                return this.makePutRequest(this.path, this.middlewares, this.action);
                 break;
             case 'delete':
-                this.makeDeleteRequest(this.path, this.middlewares, this.action);
+                return this.makeDeleteRequest(this.path, this.middlewares, this.action);
                 break;
             default:
-                this.makeGetRequest(this.path, this.middlewares, this.action);
+                return this.makeGetRequest(this.path, this.middlewares, this.action);
         }
 
     }
     
-    makePostRequest(path, middlewares = [], action) {
+    makePostRequest(path, middlewares, action) {
         this.router.post(path, ...middlewares, action);
         return this.router;
     }

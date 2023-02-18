@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         as: 'tickets'
       });
+
+      User.hasOne(models.Auth, {
+        foreignKey: 'userId',
+      });
   
       User.hasMany(models.Subticket, {
         foreignKey: 'userId',
