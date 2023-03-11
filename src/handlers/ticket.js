@@ -1,6 +1,6 @@
 const ticket = require('../controllers/ticket');
 const validator = require('../middlewares/validators/index');
-const newTicketSpec = require('../middlewares/validators/ticketSchema');
+const {newTicketSpec, getTicketSpec} = require('../middlewares/validators/ticketSchema');
 
 const routes = [
     {
@@ -8,6 +8,12 @@ const routes = [
         middlewares: [validator(newTicketSpec)],
         method: 'post',
         action: ticket.createTicket
+    },
+    {
+        path: "/tickets/:id",
+        middlewares: [validator(getTicketSpec)],
+        method: 'get',
+        action: ticket.getTicket
     }
 ]
 

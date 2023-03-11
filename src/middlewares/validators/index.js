@@ -19,6 +19,7 @@ module.exports = (schema) => {
 
         try {
             result  = validateSpec.validate({schema, data});
+            req.body = result;
             return next();
         } catch (error) {
             normalizeResponse.respF(res, null, error.message)

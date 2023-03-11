@@ -15,4 +15,12 @@ const newTicketSpec = joi.object({
     approved: joi.number()
 }).required();
 
-module.exports = newTicketSpec;
+const getTicketSpec = joi.object({
+    id: joi.number(),
+    status: joi.string().trim().valid("pending", "in development", "ready for testing", "in testing, done")
+}).required();
+
+module.exports = {
+    newTicketSpec,
+    getTicketSpec
+};

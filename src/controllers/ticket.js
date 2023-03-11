@@ -6,12 +6,20 @@ module.exports = {
     createTicket: async (req, res) => {
         Ticket.createTicket(req.body)
         .then(response => {
-            normalizeResponse.respS(res, response, message);
+            normalizeResponse.respS(res, response);
+        })
+        .catch(error => {
+            normalizeResponse.respF(res, null, error.message);
+        })
+    },
+
+    getTicket: async (req, res) => {
+        Ticket.getTicket(req.body)
+        .then(response => {
+            normalizeResponse.respS(res, response);
         })
         .catch(error => {
             normalizeResponse.respF(res, null, error.message);
         })
     }
-
-
 }
